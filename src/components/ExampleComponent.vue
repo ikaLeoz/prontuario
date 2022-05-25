@@ -65,7 +65,12 @@ export default defineComponent({
     },
   },
   setup(props) {
-    return { ...useClickCount(), ...useDisplayTodo(toRef(props, 'todos')) };
+    return {
+      ...useClickCount(),
+      ...useDisplayTodo(toRef(props, 'todos')),
+      model: ref('Google'),
+      options: ['Google', 'Facebook', 'Twitter', 'Apple', 'Oracle'],
+    };
   },
 });
 </script>
