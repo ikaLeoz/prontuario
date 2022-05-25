@@ -10,10 +10,36 @@
         >
           <div class="q-pa-md bg-grey-10 text-white">
             <div class="q-gutter-sm">
-              <q-checkbox dark v-model="teal" label="Teal" color="teal" />
-              <q-checkbox dark v-model="orange" label="Orange" color="orange" />
-              <q-checkbox dark v-model="red" label="Red" color="red" />
-              <q-checkbox dark v-model="cyan" label="Cyan" color="cyan" />
+              <q-checkbox dark v-model="irpa" label="IRPA" color="teal" />
+              <q-checkbox dark v-model="eap" label="EAP" color="orange" />
+              <q-checkbox dark v-model="icc" label="ICC" color="red" />
+              <q-checkbox dark v-model="dpoc" label="DPOC" color="cyan" />
+            </div>
+          </div>
+          <div class="q-pa-md bg-grey-10 text-white">
+            <div class="q-gutter-sm">
+              <q-checkbox
+                dark
+                v-model="ie"
+                label="INTOXICAÇAO EXOGENA"
+                color="teal"
+              />
+              <q-checkbox dark v-model="iam" label="IAM" color="orange" />
+              <q-checkbox dark v-model="pnm" label="PNM" color="red" />
+              <q-checkbox dark v-model="sepse" label="SEPSE" color="cyan" />
+            </div>
+          </div>
+          <div class="q-pa-md bg-grey-10 text-white">
+            <div class="q-gutter-sm">
+              <q-checkbox dark v-model="fa" label="FA" color="teal" />
+              <q-checkbox dark v-model="tv" label="TV" color="orange" />
+              <q-checkbox dark v-model="ira" label="IRA" color="red" />
+              <q-checkbox
+                dark
+                v-model="cc"
+                label="CRISE CONVULSIVA"
+                color="cyan"
+              />
             </div>
           </div>
         </q-step>
@@ -107,6 +133,18 @@ export default defineComponent({
       ...useDisplayTodo(toRef(props, 'todos')),
       model: ref('Google'),
       step: ref(1),
+      irpa: '',
+      eap: '',
+      icc: '',
+      dpoc: '',
+      ie: '',
+      iam: '',
+      pnm: '',
+      sepse: '',
+      fa: '',
+      tv: '',
+      ira: '',
+      cc: '',
       options: ['Google', 'Facebook', 'Twitter', 'Apple', 'Oracle'],
     };
   },
