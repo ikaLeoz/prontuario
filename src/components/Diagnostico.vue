@@ -4,7 +4,7 @@
       <q-stepper v-model="step" ref="stepper" color="primary" animated>
         <q-step
           :name="1"
-          title="Select campaign settings"
+          title="Diagnostico"
           icon="assignment"
           :done="step > 1"
         >
@@ -46,8 +46,8 @@
 
         <q-step
           :name="2"
-          title="Create an ad group"
-          caption="Optional"
+          title="AVALIAÇÃO NEUROLOGICA"
+          caption=""
           icon="assignment"
           :done="step > 2"
         >
@@ -133,7 +133,7 @@ export default defineComponent({
       ...useDisplayTodo(toRef(props, 'todos')),
       model: ref('Google'),
       step: ref(1),
-      irpa: '',
+      irpa: ref(true),
       eap: '',
       icc: '',
       dpoc: '',
