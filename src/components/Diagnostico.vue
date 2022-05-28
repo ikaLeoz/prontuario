@@ -2,12 +2,7 @@
   <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
     <div class="q-pa-md">
       <q-stepper v-model="step" ref="stepper" color="primary" animated>
-        <q-step
-          :name="1"
-          title="Diagnostico"
-          icon="assignment"
-          :done="step > 1"
-        >
+        <q-step :name="1" title="Diag." icon="assignment" :done="step > 1">
           <div class="q-pa-md bg-grey-10 text-white">
             <div class="q-gutter-sm">
               <q-checkbox dark v-model="irpa" label="IRPA" color="teal" />
@@ -46,19 +41,19 @@
 
         <q-step
           :name="2"
-          title="AVALIAÇÃO NEUROLOGICA"
+          title="Av. neuro."
           caption=""
           icon="assignment"
           :done="step > 2"
         >
-          fdsafafdafdsa
+          <avaliacao-neurologica-component
+            title="Avaliação Neurologica"
+            active
+            :todos="todos"
+            :meta="meta"
+          ></avaliacao-neurologica-component>
         </q-step>
-        <q-step
-          :name="3"
-          title="Ad template"
-          icon="assignment"
-          :done="step > 3"
-        >
+        <q-step :name="3" title="Av. resp." icon="assignment" :done="step > 3">
           terceiro
         </q-step>
 
@@ -69,7 +64,7 @@
         <template v-slot:navigation>
           <q-stepper-navigation>
             <q-btn
-              @click="$refs.stepper.next()"
+              @click="nextStepper()"
               color="primary"
               :label="step === 4 ? 'Finish' : 'Continue'"
             />
@@ -91,24 +86,15 @@
 <script lang="ts">
 import { defineComponent, PropType, computed, ref, toRef, Ref } from 'vue';
 import { Todo, Meta } from './models';
+import AvaliacaoNeurologicaComponent from './AvaliacaoNeurologica.vue';
 
-function useClickCount() {
-  const clickCount = ref(0);
-  function increment() {
-    clickCount.value += 1;
-    return clickCount.value;
-  }
-
-  return { clickCount, increment };
-}
-
-function useDisplayTodo(todos: Ref<Todo[]>) {
-  const todoCount = computed(() => todos.value.length);
-  return { todoCount };
+function nextStepper() {
+  $refs.stepper.next();
 }
 
 export default defineComponent({
   name: 'DiagnosticoComponent',
+  components: { AvaliacaoNeurologicaComponent },
   props: {
     title: {
       type: String,
@@ -118,7 +104,6 @@ export default defineComponent({
       type: Array as PropType<Todo[]>,
       default: () => [],
     },
-
     meta: {
       type: Object as PropType<Meta>,
       required: true,
@@ -129,8 +114,6 @@ export default defineComponent({
   },
   setup(props) {
     return {
-      ...useClickCount(),
-      ...useDisplayTodo(toRef(props, 'todos')),
       model: ref('Google'),
       step: ref(1),
       irpa: ref(true),
