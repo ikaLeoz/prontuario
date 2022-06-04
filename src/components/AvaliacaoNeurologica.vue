@@ -3,7 +3,7 @@
     <div class="row justify-center">
       <q-btn-toggle
         glossy
-        v-model="slide"
+        v-model="store.avaliacaoNeurologica.tipo"
         :options="[
           { label: 'Glasgow', value: 'glasgow' },
           { label: 'Escala sedação', value: 'sedacao' },
@@ -11,7 +11,7 @@
       />
     </div>
     <q-carousel
-      v-model="slide"
+      v-model="store.avaliacaoNeurologica.tipo"
       transition-prev="slide-right"
       transition-next="slide-left"
       animated
@@ -23,8 +23,8 @@
           <div class="q-gutter-md">
             <q-select
               filled
-              v-model="glasgow.ocular"
-              :options="glasgow.ocularOptions"
+              v-model="store.avaliacaoNeurologica.glasgow.ocular.value"
+              :options="store.avaliacaoNeurologica.glasgow.ocular.options"
               label="Ocular"
               title="Ocular"
               emit-value
@@ -35,8 +35,8 @@
           <div class="q-gutter-md">
             <q-select
               filled
-              v-model="glasgow.ocular"
-              :options="glasgow.ocularOptions"
+              v-model="store.avaliacaoNeurologica.glasgow.verbal.value"
+              :options="store.avaliacaoNeurologica.glasgow.verbal.options"
               label="Verbal"
               title="Verbal"
               emit-value
@@ -47,10 +47,22 @@
           <div class="q-gutter-md">
             <q-select
               filled
-              v-model="glasgow.ocular"
-              :options="glasgow.ocularOptions"
+              v-model="store.avaliacaoNeurologica.glasgow.motora.value"
+              :options="store.avaliacaoNeurologica.glasgow.motora.options"
               label="Motora"
               title="Motora"
+              emit-value
+            />
+          </div>
+        </div>
+        <div class="q-pa-md" style="min-width: 300px">
+          <div class="q-gutter-md">
+            <q-select
+              filled
+              v-model="store.avaliacaoNeurologica.glasgow.pupilas.value"
+              :options="store.avaliacaoNeurologica.glasgow.pupilas.options"
+              label="Pupilas"
+              title="Pupilas"
               emit-value
             />
           </div>
@@ -61,8 +73,8 @@
           <div class="q-gutter-md">
             <q-select
               filled
-              v-model="escala"
-              :options="escalaOptions"
+              v-model="store.avaliacaoNeurologica.escala.value"
+              :options="store.avaliacaoNeurologica.escala.options"
               label="Escala"
               title="Escala"
               emit-value
@@ -77,6 +89,7 @@
 <script lang="ts">
 import { defineComponent, PropType, ref } from 'vue';
 import { Todo, Meta } from './models';
+import { useStore } from '../stores/prontuario';
 
 export default defineComponent({
   name: 'AvaliacaoNeurologicaComponent',
@@ -98,44 +111,9 @@ export default defineComponent({
       type: Boolean,
     },
   },
-  setup(props) {
+  setup() {
     return {
-      escala: ref(null),
-      escalaOptions: [
-        {
-          label: 'Combativo',
-          value: 'combativo',
-          description: 'Paciente combativo',
-          icon: 'mail',
-        },
-      ],
-      glasgow: ref({
-        ocular: ref(null),
-
-        ocularOptions: [
-          {
-            label: 'Espontanea',
-            value: 'espontanea',
-          },
-          {
-            label: 'A voz',
-            value: 'voz',
-          },
-          {
-            label: 'A dor',
-            value: 'dor',
-          },
-          {
-            label: 'Não abre',
-            value: 'Não testado',
-          },
-          {
-            label: 'Não testado',
-            value: 'Não testado',
-          },
-        ],
-      }),
-      slide: ref('glasgow'),
+      store: useStore(),
       lorem: '123',
     };
   },
