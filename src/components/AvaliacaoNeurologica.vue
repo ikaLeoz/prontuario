@@ -23,8 +23,8 @@
           <div class="q-gutter-md">
             <q-select
               filled
-              v-model="ocular"
-              :options="ocularOptions"
+              v-model="glasgow.ocular"
+              :options="glasgow.ocularOptions"
               label="Ocular"
               title="Ocular"
               emit-value
@@ -35,8 +35,8 @@
           <div class="q-gutter-md">
             <q-select
               filled
-              v-model="ocular"
-              :options="ocularOptions"
+              v-model="glasgow.ocular"
+              :options="glasgow.ocularOptions"
               label="Verbal"
               title="Verbal"
               emit-value
@@ -47,8 +47,8 @@
           <div class="q-gutter-md">
             <q-select
               filled
-              v-model="ocular"
-              :options="ocularOptions"
+              v-model="glasgow.ocular"
+              :options="glasgow.ocularOptions"
               label="Motora"
               title="Motora"
               emit-value
@@ -109,19 +109,33 @@ export default defineComponent({
           icon: 'mail',
         },
       ],
-      glasgow: {
+      glasgow: ref({
         ocular: ref(null),
 
         ocularOptions: [
           {
             label: 'Espontanea',
             value: 'espontanea',
-            description: 'Search engine',
-            icon: 'mail',
+          },
+          {
+            label: 'A voz',
+            value: 'voz',
+          },
+          {
+            label: 'A dor',
+            value: 'dor',
+          },
+          {
+            label: 'Não abre',
+            value: 'Não testado',
+          },
+          {
+            label: 'Não testado',
+            value: 'Não testado',
           },
         ],
-      },
-      slide: ref('style'),
+      }),
+      slide: ref('glasgow'),
       lorem: '123',
     };
   },

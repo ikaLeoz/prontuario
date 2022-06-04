@@ -118,7 +118,7 @@ export default defineComponent({
     },
   },
   setup() {
-    function submit() {
+    function submit(this: any) {
       this.$refs.myForm.validate().then((success: any) => {
         if (success) {
           // yay, models are correct
