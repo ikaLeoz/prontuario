@@ -64,7 +64,7 @@
         <template v-slot:navigation>
           <q-stepper-navigation>
             <q-btn
-              @click="nextStepper()"
+              @click="nextStepper($refs.stepper)"
               color="primary"
               :label="step === 4 ? 'Finish' : 'Continue'"
             />
@@ -88,8 +88,13 @@ import { defineComponent, PropType, computed, ref, toRef, Ref } from 'vue';
 import { Todo, Meta } from './models';
 import AvaliacaoNeurologicaComponent from './AvaliacaoNeurologica.vue';
 
-function nextStepper() {
-  $refs.stepper.next();
+function clickNextStepper() {
+  function nextStepper(stepper: any) {
+    stepper.next();
+    // ENVIAR DADOS VIA AJAX
+  }
+
+  return { nextStepper };
 }
 
 export default defineComponent({
@@ -112,7 +117,17 @@ export default defineComponent({
       type: Boolean,
     },
   },
-  setup(props) {
+  setup() {
+    function submit() {
+      this.$refs.myForm.validate().then((success: any) => {
+        if (success) {
+          // yay, models are correct
+        } else {
+          // oh no, user has filled in
+          // at least one invalid value
+        }
+      });
+    }
     return {
       model: ref('Google'),
       step: ref(1),
@@ -129,6 +144,7 @@ export default defineComponent({
       ira: '',
       cc: '',
       options: ['Google', 'Facebook', 'Twitter', 'Apple', 'Oracle'],
+      ...clickNextStepper(),
     };
   },
 });
