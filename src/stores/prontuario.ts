@@ -20,7 +20,7 @@ export const useStore = defineStore('counter', {
     },
 
     avaliacaoNeurologica: {
-      tipo: ref(''),
+      tipo: ref('glasgow'),
       escala: ref({
         value: ref(null),
         options: [
