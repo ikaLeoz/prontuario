@@ -115,7 +115,7 @@ export default defineComponent({
 
   watch: {
     ['store.avaliacaoNeurologica.glasgow']: {
-      handler: function (newValue) {
+      handler: function () {
         this.glassgowCounter =
           Number(
             this.store.avaliacaoNeurologica.glasgow.ocular.options.find(

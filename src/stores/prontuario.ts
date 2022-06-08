@@ -179,20 +179,20 @@ export const useStore = defineStore('counter', {
           value: ref(null),
           options: [
             {
-              label: 'MIDRIASE',
-              value: 'MIDRIASE',
+              label: 'ISOCORICAS',
+              value: 'ISOCORICAS',
             },
             {
-              label: 'MIOSE',
-              value: 'MIOSE',
+              label: 'MIOSE / MIDRIASE',
+              value: 'MIOSE / MIDRIASE',
             },
             {
               label: 'ANISOCORIACAS',
               value: 'ANISOCORIACAS',
             },
             {
-              label: 'RFT',
-              value: 'RFT',
+              label: 'REFLEXO FOTOMOTOR',
+              value: 'REFLEXO FOTOMOTOR',
             },
           ],
         }),
