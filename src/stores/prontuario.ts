@@ -71,24 +71,29 @@ export const useStore = defineStore('counter', {
           value: ref(null),
           options: [
             {
-              label: 'Espontanea',
-              value: 'Espontanea',
+              label: 'ESPONTANEA',
+              value: 'ESPONTANEA',
+              num: 4,
             },
             {
-              label: 'A voz',
-              value: 'A voz',
+              label: 'ESTIMULO AUDITIVO',
+              value: 'ESTIMULO AUDITIVO',
+              num: 3,
             },
             {
-              label: 'A dor',
-              value: 'A dor',
+              label: 'ESTIMULO ALGICO',
+              value: 'ESTIMULO ALGICO',
+              num: 2,
             },
             {
-              label: 'Não abre',
-              value: 'Não testado',
+              label: 'SEM RESPOSTA',
+              value: 'SEM RESPOSTA',
+              num: 1,
             },
             {
-              label: 'Não testado',
-              value: 'Não testado',
+              label: 'NÃO TESTADO',
+              value: 'NÃO TESTADO',
+              num: 0,
             },
           ],
         }),
@@ -99,26 +104,32 @@ export const useStore = defineStore('counter', {
             {
               label: 'ORIENTADO',
               value: 'ORIENTADO',
+              num: 5,
             },
             {
               label: 'CONFUSA',
               value: 'CONFUSA',
+              num: 4,
             },
             {
               label: 'PALAVRA INAPROPRIADAS',
               value: 'PALAVRA INAPROPRIADAS',
+              num: 3,
             },
             {
               label: 'PALAVRAS INCOMPREENSIVAS',
               value: 'PALAVRAS INCOMPREENSIVAS',
+              num: 2,
             },
             {
               label: 'SEM RESPOSTA',
               value: 'SEM RESPOSTA',
+              num: 1,
             },
             {
               label: 'NÃO TESTADO',
               value: 'NÃO TESTADO',
+              num: 0,
             },
           ],
         }),
@@ -129,26 +140,37 @@ export const useStore = defineStore('counter', {
             {
               label: 'OBEDECE COMANDOS',
               value: 'OBEDECE COMANDOS',
+              num: 6,
             },
             {
               label: 'LOCALIZA DOR',
               value: 'LOCALIZA DOR',
+              num: 5,
             },
             {
               label: 'MOVIMENTO DE RETIRADA',
               value: 'MOVIMENTO DE RETIRADA',
+              num: 4,
             },
             {
               label: 'FLEXAO ANORMAL',
               value: 'FLEXAO ANORMAL',
+              num: 3,
             },
             {
               label: 'EXTENSAO ANORMAL',
               value: 'EXTENSAO ANORMAL',
+              num: 2,
             },
             {
               label: 'SEM RESPOSTA',
+              value: 'SEM RESPOSTA',
+              num: 1,
+            },
+            {
+              label: 'NÃO TESTADO',
               value: 'NÃO TESTADO',
+              num: 1,
             },
           ],
         }),

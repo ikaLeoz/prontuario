@@ -55,6 +55,7 @@
             />
           </div>
         </div>
+        <div>{{ glassgowCounter }}</div>
         <div class="q-pa-md" style="min-width: 300px">
           <div class="q-gutter-md">
             <q-select
@@ -87,7 +88,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, ref } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import { Todo, Meta } from './models';
 import { useStore } from '../stores/prontuario';
 
@@ -111,10 +112,39 @@ export default defineComponent({
       type: Boolean,
     },
   },
+
+  watch: {
+    ['store.avaliacaoNeurologica.glasgow']: {
+      handler: function (newValue) {
+        this.glassgowCounter =
+          Number(
+            this.store.avaliacaoNeurologica.glasgow.ocular.options.find(
+              (it: any) =>
+                it.value == this.store.avaliacaoNeurologica.glasgow.ocular.value
+            )?.num || 0
+          ) +
+          Number(
+            this.store.avaliacaoNeurologica.glasgow.verbal.options.find(
+              (it: any) =>
+                it.value == this.store.avaliacaoNeurologica.glasgow.verbal.value
+            )?.num || 0
+          ) +
+          Number(
+            this.store.avaliacaoNeurologica.glasgow.motora.options.find(
+              (it: any) =>
+                it.value == this.store.avaliacaoNeurologica.glasgow.motora.value
+            )?.num || 0
+          );
+      },
+      deep: true,
+    },
+  },
+
   setup() {
     return {
       store: useStore(),
       lorem: '123',
+      glassgowCounter: 0,
     };
   },
 });
