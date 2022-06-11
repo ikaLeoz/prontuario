@@ -174,18 +174,70 @@ export const useStore = defineStore('counter', {
             },
           ],
         }),
-
+        forcamotora: ref({
+          value: ref(''),
+          desvioRimaLabial: ref(false),
+          diminuidaTipo: ref(null),
+          diminuidaOptions: [
+            {
+              label: 'BILATERAL',
+              value: 'BILATERAL',
+            },
+            {
+              label: 'UNILATERAL Dir.',
+              value: 'UNILATERAL Dir.',
+            },
+            {
+              label: 'UNILATERAL Esq.',
+              value: 'UNILATERAL Esq.',
+            },
+          ],
+          options: [
+            {
+              label: 'PRESERVADA',
+              value: 'PRESERVADA',
+            },
+            {
+              label: 'DIMINUIDA',
+              value: 'DIMINUIDA',
+            },
+            {
+              label: 'APENAS EM MMSS',
+              value: 'APENAS EM MMSS',
+            },
+            {
+              label: 'APENAS EM MMII',
+              value: 'APENAS EM MMII',
+            },
+          ],
+        }),
         pupilas: ref({
+          isocoricas: ref(false),
+          reflexomotor: ref(false),
+          tamanho: ref(null),
           value: ref(null),
+          anisocoriacas: ref(null),
+          anisocoriacasOptinos: [
+            {
+              label: 'NORMAL',
+              value: 'NORMAL',
+            },
+
+            {
+              label: 'ESQ. > DIR.',
+              value: 'ESQ. > DIR.',
+            },
+            {
+              label: 'DIR. > ESQ.',
+              value: 'DIR. > ESQ.',
+            },
+          ],
           options: [
             {
               label: 'ISOCORICAS',
               value: 'ISOCORICAS',
             },
-            {
-              label: 'MIOSE / MIDRIASE',
-              value: 'MIOSE / MIDRIASE',
-            },
+
             {
               label: 'ANISOCORIACAS',
               value: 'ANISOCORIACAS',

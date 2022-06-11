@@ -10,80 +10,161 @@
         ]"
       />
     </div>
-    <q-carousel
-      v-model="store.avaliacaoNeurologica.tipo"
-      transition-prev="slide-right"
-      transition-next="slide-left"
-      animated
-      control-color="primary"
-      class="rounded-borders"
-    >
-      <q-carousel-slide name="glasgow" class="column no-wrap flex-center">
-        <div class="q-pa-md" style="min-width: 300px">
-          <div class="q-gutter-md">
-            <q-select
-              filled
-              v-model="store.avaliacaoNeurologica.glasgow.ocular.value"
-              :options="store.avaliacaoNeurologica.glasgow.ocular.options"
-              label="Ocular"
-              title="Ocular"
-              emit-value
-            />
+    <div>
+      <q-carousel
+        v-model="store.avaliacaoNeurologica.tipo"
+        transition-prev="slide-right"
+        transition-next="slide-left"
+        animated
+        control-color="primary"
+        class="rounded-borders"
+      >
+        <q-carousel-slide name="glasgow" class="column no-wrap flex-center">
+          <div class="q-pa-md" style="margin-top: 300px">
+            <div class="q-pa-md">
+              <div class="q-gutter-md">
+                <q-select
+                  filled
+                  v-model="store.avaliacaoNeurologica.glasgow.ocular.value"
+                  :options="store.avaliacaoNeurologica.glasgow.ocular.options"
+                  label="Ocular"
+                  title="Ocular"
+                  emit-value
+                />
+              </div>
+            </div>
+            <div class="q-pa-md" style="min-width: 300px">
+              <div class="q-gutter-md">
+                <q-select
+                  filled
+                  v-model="store.avaliacaoNeurologica.glasgow.verbal.value"
+                  :options="store.avaliacaoNeurologica.glasgow.verbal.options"
+                  label="Verbal"
+                  title="Verbal"
+                  emit-value
+                />
+              </div>
+            </div>
+            <div class="q-pa-md">
+              <div class="q-gutter-md">
+                <q-select
+                  filled
+                  v-model="store.avaliacaoNeurologica.glasgow.motora.value"
+                  :options="store.avaliacaoNeurologica.glasgow.motora.options"
+                  label="Motora"
+                  title="Motora"
+                  emit-value
+                />
+              </div>
+            </div>
+            <div class="q-pa-md">Total : {{ glassgowCounter }}</div>
           </div>
-        </div>
-        <div class="q-pa-md" style="min-width: 300px">
-          <div class="q-gutter-md">
-            <q-select
-              filled
-              v-model="store.avaliacaoNeurologica.glasgow.verbal.value"
-              :options="store.avaliacaoNeurologica.glasgow.verbal.options"
-              label="Verbal"
-              title="Verbal"
-              emit-value
-            />
+          <div style="margin: auto">
+            <hr style="width: 100%" />
+            <h6 style="margin: auto" class="q-pa-md">PUPILAS</h6>
+            <div class="q-pa-md" style="margin: auto">
+              <q-checkbox
+                v-model="store.avaliacaoNeurologica.glasgow.pupilas.isocoricas"
+                label="ISOCORICAS"
+              />
+            </div>
+            <div class="q-pa-md" style="margin: auto">
+              <q-checkbox
+                v-model="
+                  store.avaliacaoNeurologica.glasgow.pupilas.reflexomotor
+                "
+                label="REFLEXO MOTOR"
+              />
+            </div>
+            <div>
+              <q-radio
+                v-model="store.avaliacaoNeurologica.glasgow.pupilas.tamanho"
+                val="miose"
+                label="MIOSE"
+              />
+              <q-radio
+                v-model="store.avaliacaoNeurologica.glasgow.pupilas.tamanho"
+                val="midriase"
+                label="MIDRIASE"
+              />
+            </div>
+            <div class="q-pa-md">
+              <q-select
+                filled
+                v-model="
+                  store.avaliacaoNeurologica.glasgow.pupilas.anisocoriacas
+                "
+                :options="
+                  store.avaliacaoNeurologica.glasgow.pupilas
+                    .anisocoriacasOptinos
+                "
+                label="ANISOCORIA"
+                title="ANISOCORIA"
+                emit-value
+              />
+            </div>
+            <hr style="width: 100%" />
+            <h6 style="margin: auto" class="q-pa-md">FORÇA MOTORA</h6>
+            <div class="q-pa-md">
+              <q-select
+                filled
+                v-model="store.avaliacaoNeurologica.glasgow.forcamotora.value"
+                :options="
+                  store.avaliacaoNeurologica.glasgow.forcamotora.options
+                "
+                label="FORÇA"
+                title="FORÇA"
+                emit-value
+              />
+            </div>
+            <div
+              class="q-pa-md"
+              v-if="
+                store.avaliacaoNeurologica.glasgow.forcamotora.value ==
+                'DIMINUIDA'
+              "
+            >
+              <q-select
+                filled
+                v-model="
+                  store.avaliacaoNeurologica.glasgow.forcamotora.diminuidaTipo
+                "
+                :options="
+                  store.avaliacaoNeurologica.glasgow.forcamotora
+                    .diminuidaOptions
+                "
+                label="TIPO DIMINUIDA"
+                title="TIPO DIMINUIDA"
+                emit-value
+              />
+            </div>
+            <div class="q-pa-md" style="margin: auto">
+              <q-checkbox
+                v-model="
+                  store.avaliacaoNeurologica.glasgow.forcamotora
+                    .desvioRimaLabial
+                "
+                label="DESVIO DE RIMA LABIA"
+              />
+            </div>
           </div>
-        </div>
-        <div class="q-pa-md" style="min-width: 300px">
-          <div class="q-gutter-md">
-            <q-select
-              filled
-              v-model="store.avaliacaoNeurologica.glasgow.motora.value"
-              :options="store.avaliacaoNeurologica.glasgow.motora.options"
-              label="Motora"
-              title="Motora"
-              emit-value
-            />
+        </q-carousel-slide>
+        <q-carousel-slide name="sedacao" class="column no-wrap flex-center">
+          <div class="q-pa-md" style="min-width: 300px">
+            <div class="q-gutter-md">
+              <q-select
+                filled
+                v-model="store.avaliacaoNeurologica.escala.value"
+                :options="store.avaliacaoNeurologica.escala.options"
+                label="Escala"
+                title="Escala"
+                emit-value
+              />
+            </div>
           </div>
-        </div>
-        <div>{{ glassgowCounter }}</div>
-        <div class="q-pa-md" style="min-width: 300px">
-          <div class="q-gutter-md">
-            <q-select
-              filled
-              v-model="store.avaliacaoNeurologica.glasgow.pupilas.value"
-              :options="store.avaliacaoNeurologica.glasgow.pupilas.options"
-              label="Pupilas"
-              title="Pupilas"
-              emit-value
-            />
-          </div>
-        </div>
-      </q-carousel-slide>
-      <q-carousel-slide name="sedacao" class="column no-wrap flex-center">
-        <div class="q-pa-md" style="min-width: 300px">
-          <div class="q-gutter-md">
-            <q-select
-              filled
-              v-model="store.avaliacaoNeurologica.escala.value"
-              :options="store.avaliacaoNeurologica.escala.options"
-              label="Escala"
-              title="Escala"
-              emit-value
-            />
-          </div>
-        </div>
-      </q-carousel-slide>
-    </q-carousel>
+        </q-carousel-slide>
+      </q-carousel>
+    </div>
   </div>
 </template>
 
